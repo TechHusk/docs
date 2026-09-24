@@ -1,0 +1,105 @@
+---
+title: "Get Husk Spend Alerts and Notifications in Slack"
+sidebarTitle: "Slack"
+description: "Connect Husk to Slack to receive real-time spend alerts, receipt reminders, and approval notifications in the channels your team already uses."
+---
+
+The Husk Slack integration brings your financial activity into the place your team communicates. Instead of logging into the dashboard to check for missing receipts or over-budget alerts, Husk surfaces the right information at the right time — directly in Slack. You can also query your balances and spend totals on the fly by mentioning the Husk bot in any channel.
+
+## What the Slack integration does
+
+- **Spend alerts** — notifies you when a card transaction is posted, including amount, merchant, and cardholder
+- **Budget threshold alerts** — pings your chosen channel when a category or team budget reaches a configured percentage
+- **Receipt missing reminders** — reminds cardholders to attach a receipt when one hasn't been uploaded within your configured window
+- **Approval notifications** — routes spend approval requests to approvers and confirms when they're approved or declined
+- **Balance summaries** — receive a scheduled daily or weekly summary of your account balances and burn rate
+
+---
+
+## Connect Husk to Slack
+
+<Steps>
+  <Step title="Open Integrations in the Husk dashboard">
+    Log in to [app.usehusk.com](https://app.usehusk.com) and go to **Settings → Integrations**.
+  </Step>
+  <Step title="Select Slack">
+    Find the Slack tile and click **Connect**. You'll be redirected to Slack's OAuth authorisation page.
+  </Step>
+  <Step title="Add Husk to your Slack workspace">
+    Click **Allow** on the Slack authorisation screen. Make sure you're authorising the correct workspace — Husk will only be able to post to the workspace you select here.
+  </Step>
+  <Step title="Choose your default notification channel">
+    Back in Husk, select the Slack channel where you want spend alerts and notifications to be posted by default. You can use an existing channel or create a new one in Slack first.
+  </Step>
+  <Step title="Save your settings">
+    Click **Save** to activate the integration. Husk will post a confirmation message to your chosen channel to confirm the connection is live.
+  </Step>
+</Steps>
+
+<Tip>
+  Create a dedicated **#finance-alerts** channel in Slack before connecting Husk. Keeping financial notifications separate from general channels makes it easier for your finance team to monitor alerts without the noise, and gives you a clean audit trail of all spend activity.
+</Tip>
+
+---
+
+## Configure notification types
+
+Once connected, fine-tune exactly what Husk posts and where. Go to **Settings → Integrations → Slack → Notification settings**.
+
+<Accordion title="Transaction alerts">
+  Post a message to Slack every time a Husk card transaction is authorised. You can choose to notify:
+  - All transactions
+  - Transactions above a specified amount (e.g. only transactions over €50)
+  - Transactions from specific cardholders or teams
+
+  Assign a dedicated channel for transaction alerts if you want to keep them separate from other notifications.
+</Accordion>
+
+<Accordion title="Budget threshold alerts">
+  Get notified when a category or team budget reaches a threshold you define. Common settings:
+  - **75% spent** — early warning to review or reallocate budget
+  - **90% spent** — urgent alert for approvers
+  - **100% spent** — immediate notification that a budget is exhausted
+
+  Each threshold can route to a different channel or tag a specific person.
+</Accordion>
+
+<Accordion title="Receipt missing reminders">
+  Husk automatically reminds cardholders in Slack if they haven't attached a receipt within your configured window (default: 48 hours). The reminder goes to the cardholder directly as a Slack DM.
+
+  You can adjust the reminder window and choose whether to send a follow-up reminder if the receipt is still missing after a second period.
+</Accordion>
+
+<Accordion title="Approval notifications">
+  When a spend request or out-of-policy transaction requires approval, Husk sends a Slack message to the designated approver with a one-click approve or decline action. The requester receives a notification once a decision is made.
+</Accordion>
+
+<Accordion title="Balance and burn rate summaries">
+  Schedule a daily or weekly digest to your chosen channel summarising:
+  - Current account balances
+  - Spend vs. budget for the period
+  - Burn rate and runway estimate
+
+  Useful for keeping leadership informed without requiring them to log into the dashboard.
+</Accordion>
+
+---
+
+## Query Husk from Slack with the bot
+
+Once connected, you can mention **@Husk** in any channel or DM to ask quick financial questions without leaving Slack.
+
+**Example queries:**
+
+```
+@Husk What's our current balance?
+@Husk How much did we spend on SaaS this month?
+@Husk Who has outstanding receipts?
+@Husk What's our runway at the current burn rate?
+```
+
+The Husk bot responds with a formatted summary pulled live from your dashboard data.
+
+<Note>
+  The Husk bot only responds to members of your Husk workspace. Users who are in Slack but not invited to your Husk account will see a message asking them to request access.
+</Note>

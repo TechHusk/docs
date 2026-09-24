@@ -1,0 +1,111 @@
+---
+title: "Sync Husk Expenses With Your Accounting Software"
+sidebarTitle: "Accounting"
+description: "Connect Husk to Xero, QuickBooks, or NetSuite to automatically sync reconciled transactions, receipts, VAT data, and expense categories."
+---
+
+Keeping your accounting software in sync with your actual spend is one of the most time-consuming parts of finance ops. Husk eliminates the manual export-and-import cycle by pushing reconciled transactions, categorised expenses, attached receipts, and VAT data directly into Xero, QuickBooks, or NetSuite — automatically, after every reconciliation.
+
+## What syncs
+
+| Data type | Xero | QuickBooks | NetSuite |
+|---|---|---|---|
+| Reconciled transactions | ✅ | ✅ | ✅ |
+| Expense categories | ✅ | ✅ | ✅ |
+| Attached receipts | ✅ | ✅ | ✅ |
+| VAT / tax data | ✅ | ✅ | ✅ |
+| Employee / cardholder mapping | ✅ | ✅ | Contact support |
+
+<Tip>
+  Map your Husk expense categories to your chart of accounts **before** your first sync. Doing this upfront prevents uncategorised transactions from landing in a catch-all account and saves you a clean-up job later. Go to **Settings → Expense Categories** to manage your category list.
+</Tip>
+
+---
+
+## Connect Xero
+
+<Steps>
+  <Step title="Open Integrations in the Husk dashboard">
+    Log in to [app.usehusk.com](https://app.usehusk.com) and navigate to **Settings → Integrations**.
+  </Step>
+  <Step title="Select Xero">
+    Find the Xero tile and click **Connect**. You'll be redirected to the Xero OAuth authorisation screen.
+  </Step>
+  <Step title="Authorise access">
+    Sign in to Xero (if not already) and select the Xero organisation you want to connect. Click **Allow access** to grant Husk permission to read and write accounting data.
+  </Step>
+  <Step title="Map expense categories">
+    Back in Husk, you'll see a category mapping screen. Match each Husk expense category to the corresponding account code in your Xero chart of accounts. Click **Save mapping** when done.
+  </Step>
+  <Step title="Choose your sync start date">
+    Select the date from which Husk should start syncing transactions. For a clean handover, choose the start of your current accounting period.
+  </Step>
+  <Step title="Confirm and activate">
+    Click **Activate sync**. Husk will perform an initial sync and surface any mapping conflicts for you to resolve before going live.
+  </Step>
+</Steps>
+
+---
+
+## Connect QuickBooks
+
+<Steps>
+  <Step title="Open Integrations in the Husk dashboard">
+    Go to **Settings → Integrations** in [app.usehusk.com](https://app.usehusk.com).
+  </Step>
+  <Step title="Select QuickBooks">
+    Find the QuickBooks tile and click **Connect**. You'll be taken to the Intuit OAuth screen.
+  </Step>
+  <Step title="Authorise access">
+    Sign in to your QuickBooks account and select the company file you want to connect. Click **Connect** to authorise Husk.
+  </Step>
+  <Step title="Map expense categories">
+    Use the category mapping screen to match Husk expense categories to your QuickBooks accounts. Husk will suggest matches based on account names — review and adjust as needed, then click **Save mapping**.
+  </Step>
+  <Step title="Set sync preferences">
+    Choose whether to sync as **expenses** or **bank transactions**, and select your preferred VAT treatment. These settings can be changed later under **Settings → Integrations → QuickBooks**.
+  </Step>
+  <Step title="Activate sync">
+    Click **Activate sync** to go live. The first sync may take a few minutes depending on your transaction history.
+  </Step>
+</Steps>
+
+---
+
+## Connect NetSuite
+
+NetSuite uses a custom enterprise setup due to its flexible chart of accounts and subsidiary structure. Self-serve connection is not available for NetSuite.
+
+<Steps>
+  <Step title="Contact Husk support">
+    Email [support@usehusk.com](mailto:support@usehusk.com) with your NetSuite account ID and a brief description of your entity and subsidiary structure.
+  </Step>
+  <Step title="Work through setup with the Husk team">
+    A Husk integration specialist will guide you through token-based authentication, field mapping, and subsidiary configuration in a 30-minute setup call.
+  </Step>
+  <Step title="Validate and go live">
+    Run a test sync in your NetSuite sandbox environment before activating the live connection.
+  </Step>
+</Steps>
+
+<Note>
+  NetSuite integration is available on the **Growth plan** only. [Upgrade your plan](/account/plans-billing) if needed before scheduling your setup call.
+</Note>
+
+---
+
+## Sync frequency and manual sync
+
+By default, Husk syncs to your accounting software **once per day**, overnight. Reconciled transactions from the previous day appear in your accounting tool the following morning.
+
+To trigger an immediate sync at any time:
+
+1. Go to **Settings → Integrations**.
+2. Click the three-dot menu next to your connected accounting tool.
+3. Select **Sync now**.
+
+The sync status indicator shows the timestamp of the last successful sync and highlights any errors that need attention.
+
+<Warning>
+  If a sync fails due to a mapping conflict or authentication issue, Husk will not retry automatically until you resolve the error. Check **Settings → Integrations** regularly or enable Slack notifications to be alerted to sync failures immediately.
+</Warning>

@@ -1,0 +1,144 @@
+---
+title: "AI Cost Breakdown by Model, Feature, and Provider"
+sidebarTitle: "Cost Breakdown"
+description: "See exactly what each AI model and product feature costs you. Tag API calls, simulate model switches, and catch billing anomalies across every provider."
+---
+
+Understanding your AI spend starts with a single question: where is the money actually going? Husk's cost breakdown view answers that question at every level of granularity — from your total provider bill down to the cost of a single product feature or model version. Instead of waiting for end-of-month invoices and manually reconciling spreadsheets, you get a live, attributed view of every dollar your AI infrastructure consumes.
+
+## What cost breakdown shows you
+
+When you open the AI Spend section of your [Husk dashboard](https://app.usehusk.com), you'll see your total AI spend broken down across three dimensions:
+
+- **Provider** — OpenAI, Anthropic, Google Vertex, Cohere, and any other provider you've connected
+- **Model** — GPT-4o, GPT-4.1, Claude 3.7 Sonnet, Gemini 2.0 Flash, and every other model version you've called
+- **Label / feature** — product surfaces you define yourself (e.g. `summarisation`, `search`, `onboarding-chat`)
+
+Each dimension is filterable and time-rangeable. You can zoom in on a single provider's costs over the last 30 days, or compare feature-level spend across the last three months to spot trends before they become problems.
+
+## Tagging AI requests with labels
+
+Cost breakdown becomes most powerful when every API call your application makes carries a consistent label. Husk reads labels from a custom HTTP header you add to your outbound requests. This requires a small, one-time change in your application code.
+
+<Tabs>
+  <Tab title="OpenAI (Python)">
+    ```python
+    import openai
+
+    client = openai.OpenAI()
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "user", "content": prompt}],
+        extra_headers={
+            "X-Husk-Label": "summarisation",
+            "X-Husk-Customer-ID": customer_id,  # optional, enables customer profitability
+        },
+    )
+    ```
+  </Tab>
+  <Tab title="Anthropic (Python)">
+    ```python
+    import anthropic
+
+    client = anthropic.Anthropic()
+
+    message = client.messages.create(
+        model="claude-3-7-sonnet-20250219",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": prompt}],
+        extra_headers={
+            "X-Husk-Label": "onboarding-chat",
+            "X-Husk-Customer-ID": customer_id,
+        },
+    )
+    ```
+  </Tab>
+  <Tab title="OpenAI (Node.js)">
+    ```typescript
+    import OpenAI from "openai";
+
+    const client = new OpenAI();
+
+    const response = await client.chat.completions.create(
+      {
+        model: "gpt-4o",
+        messages: [{ role: "user", content: prompt }],
+      },
+      {
+        headers: {
+          "X-Husk-Label": "search",
+          "X-Husk-Customer-ID": customerId,
+        },
+      }
+    );
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+  Add consistent labels to **every** AI call from day one — even if you only have one feature today. Retroactive labelling isn't possible, and unlabelled calls appear as `unattributed` in the breakdown, which limits the value of your cost data over time.
+</Tip>
+
+Labels follow a free-form string format, so you can use whatever naming convention already exists in your codebase. Most teams align labels to product features, engineering squad names, or major user flows. Keep them stable: renaming a label mid-month splits your historical view.
+
+## Identifying your top cost drivers
+
+Once labels are in place, the **Top Cost Drivers** panel ranks your features and models by total spend for the selected period. Use it to answer questions like:
+
+- Which feature is burning the most budget, and is it generating proportional value?
+- Which model version accounts for the largest share of costs — and is it the one you actually need for that feature?
+- Has any feature's cost increased week-over-week without a corresponding increase in usage?
+
+Sorting by **cost per request** (rather than total cost) often surfaces the most actionable insights: a low-volume internal feature running on an expensive model can quietly consume a disproportionate share of your AI budget.
+
+## Model switch simulator
+
+The model switch simulator lets you model the financial impact of changing a model before you touch any code. Select a feature label, choose a target model, and Husk calculates the projected cost difference based on your actual request volume and token distribution.
+
+The simulator surfaces the full margin impact, not just the raw cost change. For example:
+
+<Info>
+  **Example simulation output**
+
+  Current configuration: `summarisation` feature on GPT-4o
+  Target model: GPT-4.1
+
+  > Switching to GPT-4.1 raises cost **35%**. At current revenue, your margin on this feature drops from **55% to 30%**.
+
+  Husk uses your connected revenue data (or a manually entered price-per-customer) to calculate the margin effect. If you haven't connected revenue data yet, the simulator shows cost impact only.
+</Info>
+
+Use the simulator during sprint planning, before model upgrades, or when a provider announces a price change. It removes the guesswork from model selection and gives your engineering and finance teams a shared, quantified frame for trade-off conversations.
+
+## Billing reconciliation
+
+Husk continuously monitors your provider invoices for anomalies and reconciles them against your actual request logs:
+
+- **Double charges** — flagged automatically when a provider bills for the same request window twice
+- **Quiet price changes** — Husk compares your per-token or per-request rate against the provider's published pricing and alerts you when they diverge
+- **Unexpected usage spikes** — real-time alerts when any label or model crosses a configurable spend threshold within a billing period
+- **Cost drift** — week-over-week comparisons that surface gradual, hard-to-notice increases before they compound into large overruns
+
+Reconciliation alerts appear in the **Billing Anomalies** tab and can be forwarded to Slack via the [Slack integration](/integrations/slack).
+
+## Forecasting and budgeting
+
+The **Forecast** panel projects your end-of-period AI spend based on current run rate, broken down by provider and label. You can set monthly budgets per label or per provider and receive alerts when you're tracking above target.
+
+<Steps>
+  <Step title="Open AI Spend → Budgets">
+    Navigate to **AI Spend** in the sidebar, then select the **Budgets** tab.
+  </Step>
+  <Step title="Set a budget per label or provider">
+    Choose a label (e.g. `search`) or a provider (e.g. OpenAI), enter your monthly budget in EUR, and click **Save Budget**.
+  </Step>
+  <Step title="Enable alerts">
+    Choose alert thresholds — for example, notify at 70% and 90% of budget. Alerts can go to email, Slack, or both.
+  </Step>
+  <Step title="Review the forecast panel">
+    The forecast panel updates daily. If your run rate is trending above budget, Husk surfaces the top contributing labels so you know where to act.
+  </Step>
+</Steps>
+
+Pair budgets with the model switch simulator to stress-test your forecast before committing to infrastructure changes. If you're approaching the end of a runway period, the forecasted AI burn feeds directly into your [runway calculation](/insights/burn-rate-runway) so you have one consistent picture across your full financial model.

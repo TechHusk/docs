@@ -1,0 +1,89 @@
+---
+title: "Capture Receipts Instantly via WhatsApp with Husk"
+sidebarTitle: "WhatsApp Receipts"
+description: "Send any receipt to your Husk WhatsApp number and let AI extract merchant, amount, date, and category automatically — supporting 107+ languages."
+---
+
+Husk's WhatsApp receipt capture removes the single biggest friction point in expense management: getting receipts from your team. Instead of asking employees to log into a portal or fill in an expense form, they simply snap a photo of their receipt and send it to the Husk WhatsApp number. Husk handles everything else — reading the receipt, extracting the data, and matching it to the right card transaction.
+
+## How WhatsApp receipt capture works
+
+The flow is deliberately simple:
+
+1. Make a purchase with your Husk card.
+2. Take a photo of the receipt (or save the PDF).
+3. Send it to the Husk WhatsApp number.
+4. Husk AI extracts the data and matches the receipt to your transaction.
+
+That's it. No app to open, no form to fill in, no email to send — just the messaging app your team already uses every day.
+
+## Set up WhatsApp receipt capture
+
+<Steps>
+  <Step title="Open the Husk dashboard">
+    Log in to [app.usehusk.com](https://app.usehusk.com) and navigate to **Expenses → Receipt Capture** in the left-hand sidebar.
+  </Step>
+  <Step title="Connect WhatsApp">
+    Click **Connect WhatsApp** and follow the on-screen instructions. You'll be shown the Husk WhatsApp business number and a QR code you can scan to start the chat immediately.
+  </Step>
+  <Step title="Share the chat link with your team">
+    Copy the shareable Husk WhatsApp link from the **Team Setup** tab and send it to your colleagues via Slack, email, or however your team communicates. Anyone with the link can start submitting receipts straight away.
+  </Step>
+  <Step title="Send your first receipt">
+    Ask a team member to make a test purchase, snap the receipt, and send it to the Husk WhatsApp number. Within moments the extracted details will appear in the **Reconciliation** queue on the dashboard.
+  </Step>
+</Steps>
+
+## What Husk extracts automatically
+
+When a receipt arrives via WhatsApp, Husk's AI engine reads it and pulls out the following fields without any manual input:
+
+| Field | Example |
+|---|---|
+| **Merchant name** | Deliveroo, AWS, WeWork |
+| **Amount** | €42.50 |
+| **Currency** | EUR, GBP, USD, and more |
+| **Date** | 14 Jun 2025 |
+| **Category** | Meals & Entertainment, Software, Travel |
+
+These fields are pre-filled on the expense record and can be edited at any time from the dashboard if a correction is needed.
+
+## Supported file types
+
+You can send receipts in the following formats:
+
+- **Photos** — JPEG or PNG taken directly on a phone camera
+- **Screenshots** — from email confirmations or online checkouts
+- **PDF documents** — invoices, e-receipts, and statements
+
+<Tip>
+  Before sending a receipt, type a short note in the WhatsApp message — for example *"Team lunch Berlin"* or *"AWS prod account July"*. Husk attaches your note to the expense record, making categorisation and search significantly easier later.
+</Tip>
+
+## Processing invoices in 107+ languages
+
+Husk's OCR and extraction engine supports more than 107 languages, so your team can submit receipts from anywhere in the world — in the local language — without any manual re-entry. Whether it's a restaurant bill in Japanese, a hotel folio in Arabic, or a contractor invoice in Polish, Husk reads it accurately and maps it to the correct fields.
+
+<Info>
+  Currency conversion is handled automatically. Husk records both the original currency and the EUR equivalent at the time of the transaction, keeping your reporting consistent.
+</Info>
+
+## What happens after submission
+
+Once a receipt lands in Husk via WhatsApp:
+
+1. The AI engine extracts all fields within seconds.
+2. Husk searches your recent card transactions for a matching amount, merchant, and date.
+3. If a match is found, the receipt is paired with the transaction and the expense is marked **Reconciled**.
+4. If no match is found yet (for example, the transaction is still pending), the receipt waits in the **Pending Match** queue and is paired automatically once the transaction clears.
+5. Reconciled expenses are immediately available in your real-time expense reports and ready to export to your accounting tool.
+
+See [Reconciliation](/expenses/reconciliation) to learn how to review, approve, and export matched expenses.
+
+## Bill Pay (coming soon)
+
+Husk is building a Bill Pay feature that will let you submit supplier invoices via WhatsApp and approve payments directly from the chat — without ever opening the dashboard. When it launches, you'll be able to manage your entire accounts payable workflow from the same WhatsApp thread your team already uses for receipts.
+
+<Note>
+  Bill Pay is on the roadmap and will be available to Startup and Growth plan customers first. You'll be notified in the dashboard when it's ready to enable.
+</Note>

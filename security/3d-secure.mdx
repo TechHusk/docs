@@ -1,0 +1,73 @@
+---
+title: "3D Secure Authentication on Husk Cards Explained"
+sidebarTitle: "3D Secure"
+description: "All Husk cards include Mastercard Identity Check (3D Secure) at no extra cost — adding a real-time authentication step to every online card payment."
+---
+
+3D Secure (3DS) is an extra layer of identity verification that activates when you or a team member pays online at a participating merchant. Husk enables it on every card, on every plan, automatically — no configuration required. This single feature shifts fraud liability away from your company in the vast majority of card-not-present scenarios and is a cornerstone of Husk's commitment to keeping your spend safe.
+
+## What is 3D Secure?
+
+3D Secure is an authentication protocol developed by the card networks. On the Mastercard network — which powers all Husk cards — it is branded **Mastercard Identity Check**. When a merchant's payment page supports 3DS, the card network asks the cardholder to prove their identity before approving the transaction. This happens in the background for low-risk purchases (frictionless flow) or with an explicit challenge for higher-risk ones.
+
+<Note>
+  Because 3DS shifts liability, a fraudulent transaction that passes a 3DS challenge is typically the responsibility of the merchant's acquirer — not your company. Enabling 3DS is one of the most effective steps you can take to reduce financial exposure from online fraud.
+</Note>
+
+## How 3DS works for Husk cardholders
+
+<Steps>
+  <Step title="Cardholder initiates an online payment">
+    A team member enters their Husk virtual or physical card details at a merchant checkout that supports 3D Secure.
+  </Step>
+  <Step title="Merchant triggers a 3DS check">
+    The merchant's payment processor sends an authentication request to the Mastercard network, which routes it to Husk as the card issuer.
+  </Step>
+  <Step title="Husk assesses risk automatically">
+    For low-risk transactions, Husk approves the challenge silently in the background — the cardholder sees no interruption (frictionless flow).
+  </Step>
+  <Step title="Cardholder receives an authentication prompt (if required)">
+    For higher-risk transactions, the cardholder receives a **push notification** (Husk mobile app) or **SMS** to the phone number on file. Tap **Approve** or enter the one-time code to confirm the payment.
+  </Step>
+  <Step title="Payment is authorised or declined">
+    Once the cardholder confirms, the payment proceeds. If the challenge times out or is rejected, the transaction is declined and the cardholder should retry or contact their card manager.
+  </Step>
+</Steps>
+
+## Is 3DS enabled on my cards?
+
+Yes — 3D Secure is **on by default for every Husk card** and cannot be disabled. You do not need to visit any settings page to activate it. Virtual cards issued in seconds and physical cards ordered through the dashboard all carry 3DS from the moment they are active.
+
+<Tip>
+  To confirm 3DS is active on a specific card, navigate to **Cards → [card name] → Card Details** in the Husk dashboard. The security section will show "3D Secure: Enabled".
+</Tip>
+
+## What to do if a 3DS challenge fails unexpectedly
+
+If a cardholder receives a 3DS challenge but the payment still fails, work through the following checklist:
+
+<Accordion title="Verify the phone number on file">
+  Go to **Settings → Team Members → [member] → Contact Details** and confirm the mobile number is correct and includes the full international dialling code (e.g., +353 for Ireland). SMS challenges are sent to this number.
+</Accordion>
+
+<Accordion title="Check for the Husk mobile app notification">
+  If the cardholder has the Husk app installed and notifications enabled, the 3DS challenge is delivered as a push notification rather than an SMS. Ask them to check their notification tray and ensure app notifications are not blocked.
+</Accordion>
+
+<Accordion title="Confirm the card is not frozen or over its limit">
+  A card that is frozen or has reached its spending limit will decline before 3DS is even triggered. Check the card status in **Cards → [card name]** and review the remaining limit.
+</Accordion>
+
+<Accordion title="Retry on the merchant site">
+  Occasionally a 3DS session times out before the cardholder responds. Ask the cardholder to return to the merchant checkout and restart the payment — a fresh 3DS request will be issued.
+</Accordion>
+
+<Accordion title="Contact Husk support">
+  If the issue persists, reach out via the in-app chat, your dedicated Slack channel, or email **hi@usehusk.com**. Share the last four digits of the card and the approximate time of the attempted transaction so the team can investigate.
+</Accordion>
+
+## 3D Secure and plan availability
+
+<Info>
+  3D Secure is included on **all Husk plans** — Free, Startup, and Growth — at no additional charge. There is no premium tier required to access this protection.
+</Info>

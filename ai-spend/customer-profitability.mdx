@@ -1,0 +1,138 @@
+---
+title: "Track AI Cost Per Customer and Protect Your Margins"
+sidebarTitle: "Customer Profitability"
+description: "Find out which customers cost more to serve with AI than they pay. Attribute every API call to a customer ID and see real margin by account in Husk."
+---
+
+Not every customer is equally profitable — and when AI is a core part of your product, the difference can be dramatic. A customer on your entry-level plan might generate ten times the LLM calls of a customer on your enterprise tier. Without attribution, you never see it until a renewal conversation goes sideways or a funding round forces you to explain your unit economics. Husk's customer profitability view gives you that attribution automatically, so you can spot and fix margin problems before they damage your runway.
+
+## What customer profitability tracking shows you
+
+The **Customer Profitability** view in your [Husk dashboard](https://app.usehusk.com) maps your AI API costs to individual customer accounts and compares them against each customer's revenue. For every tagged customer you'll see:
+
+- **AI cost** — total spend attributed to that customer's API usage in the selected period
+- **Revenue** — the MRR or ARR contribution you've entered or synced from your billing system
+- **Gross margin** — revenue minus attributed AI cost, expressed as both an absolute figure and a percentage
+- **Cost per request** — average AI cost for a single interaction, useful for benchmarking usage patterns across tiers
+
+The table sorts by margin by default, so the most problematic accounts surface at the top. You can filter by time range, customer segment, or feature label to narrow your analysis.
+
+## Why it matters
+
+Some customers cost more to serve with AI than they pay. This is more common than most founders realise, especially during early pricing decisions made before real usage data was available. A customer who was priced on a flat-fee tier during your beta may now be responsible for 20% of your OpenAI bill while contributing 5% of your revenue. Left unaddressed, those customers quietly erode your margins and accelerate runway consumption.
+
+Customer profitability tracking turns this from a lurking problem into a manageable one. When you can see the margin impact of each account in real time, you can make intentional decisions about pricing adjustments, usage limits, or model selection — instead of discovering the problem at your next board meeting.
+
+## Setting up customer tagging
+
+Customer profitability requires one addition to your application code: a customer identifier on every outbound AI API call. Husk reads this from the `X-Husk-Customer-ID` header.
+
+<Tabs>
+  <Tab title="OpenAI (Python)">
+    ```python
+    import openai
+
+    client = openai.OpenAI()
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{"role": "user", "content": prompt}],
+        extra_headers={
+            "X-Husk-Customer-ID": customer.id,   # your internal customer identifier
+            "X-Husk-Label": "chat",               # optional feature label
+        },
+    )
+    ```
+  </Tab>
+  <Tab title="Anthropic (Python)">
+    ```python
+    import anthropic
+
+    client = anthropic.Anthropic()
+
+    message = client.messages.create(
+        model="claude-3-7-sonnet-20250219",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": prompt}],
+        extra_headers={
+            "X-Husk-Customer-ID": customer.id,
+            "X-Husk-Label": "search",
+        },
+    )
+    ```
+  </Tab>
+  <Tab title="OpenAI (Node.js)">
+    ```typescript
+    import OpenAI from "openai";
+
+    const client = new OpenAI();
+
+    const response = await client.chat.completions.create(
+      {
+        model: "gpt-4o",
+        messages: [{ role: "user", content: prompt }],
+      },
+      {
+        headers: {
+          "X-Husk-Customer-ID": customer.id,
+          "X-Husk-Label": "summarisation",
+        },
+      }
+    );
+    ```
+  </Tab>
+</Tabs>
+
+Use whatever identifier your application already uses for customers — a UUID, a database ID, or an account slug. Husk maps the identifier to a display name if you upload a customer list or connect a billing integration (Stripe, Chargebee, or a CSV upload via **Settings → Customers**).
+
+<Warning>
+  Customer profitability data is only as reliable as your tagging coverage. If a significant portion of your AI calls are sent without a `X-Husk-Customer-ID` header, those costs appear as `unattributed` and won't flow into any customer's margin calculation. Audit your tagging coverage in **AI Spend → Attribution Health** before acting on the customer profitability view — aim for 90%+ coverage before treating the margin figures as decision-ready.
+</Warning>
+
+## Reading the customer profitability view
+
+Once tagging is in place and data has accumulated (Husk typically needs 7–14 days of data for meaningful patterns), open **AI Spend → Customer Profitability** in the dashboard.
+
+<Steps>
+  <Step title="Review the margin column">
+    Sort by **Gross Margin %**. Customers in the red (negative margin) or below your target margin threshold are flagged automatically. The default warning threshold is 20% gross margin — you can adjust this in **Settings → Profitability Thresholds**.
+  </Step>
+  <Step title="Drill into a customer">
+    Click any customer row to see their cost broken down by feature label and model. This tells you *why* a customer is expensive — is it volume, model choice, or a specific feature?
+  </Step>
+  <Step title="Compare against tier benchmarks">
+    The **Tier Benchmarks** panel shows average AI cost per customer for each pricing tier. If a customer is significantly above their tier's benchmark, that's a signal to review their usage patterns or pricing.
+  </Step>
+  <Step title="Export for board or investor reporting">
+    Use the **Export** button to download the customer profitability table as a CSV. The export includes cost, revenue, margin, and request volume columns, ready to drop into a board deck or financial model.
+  </Step>
+</Steps>
+
+## Identifying unprofitable customers before they hurt runway
+
+Husk flags customers who are trending toward negative margin with a **profitability alert** — a real-time notification that appears in the dashboard and, if you've connected Slack, in your chosen Slack channel. Alerts trigger when a customer's rolling 30-day margin falls below your configured threshold.
+
+Early identification matters because the economics compound. A customer who is marginally unprofitable today becomes significantly unprofitable if their usage grows — or if a model price increase widens the gap. Catching it at 15% margin gives you time to act thoughtfully; catching it at -40% margin forces a harder conversation.
+
+## Taking action on unprofitable accounts
+
+Once you've identified which customers are eroding your margins, you have several levers to pull:
+
+<AccordionGroup>
+  <Accordion title="Adjust pricing for the next renewal">
+    Use the customer's actual AI cost data as the basis for a pricing conversation. Customers are far more receptive to cost-based pricing adjustments when you can show them the numbers behind the change.
+  </Accordion>
+  <Accordion title="Introduce usage-based limits per tier">
+    Set a monthly AI call or token limit for each pricing tier in your application, aligned with the cost envelope that keeps each tier profitable. Use Husk's per-customer data to calibrate those limits against real usage distributions.
+  </Accordion>
+  <Accordion title="Route unprofitable customers to cheaper models">
+    If a specific customer segment is expensive to serve because of model selection, use the [model switch simulator](/ai-spend/cost-breakdown#model-switch-simulator) to find a model that maintains acceptable quality at a lower cost per request. Apply that routing selectively by customer tier in your application logic.
+  </Accordion>
+  <Accordion title="Re-evaluate plan fit">
+    Some customers are on the wrong plan — their usage profile fits a higher tier, but they're grandfathered on an older price. The cost breakdown per customer gives you the evidence to have that upgrade conversation with confidence.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Schedule a monthly profitability review using the exported CSV alongside your [burn rate and runway data](/insights/burn-rate-runway). Pairing AI unit economics with your cash position gives you the full picture needed for accurate financial planning and investor reporting.
+</Tip>

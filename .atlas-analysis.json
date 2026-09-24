@@ -1,0 +1,120 @@
+{
+  "projectType": "saas",
+  "projectName": "Husk",
+  "projectDescription": "Husk is an AI-native financial operating system for growing European teams, offering corporate cards, expense management, real-time financial insights, and AI spend tracking — all in one platform.",
+  "theme": "almond",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "pricing-plans"
+            ]
+          },
+          {
+            "group": "Corporate Cards",
+            "pages": [
+              "cards/overview",
+              "cards/virtual-cards",
+              "cards/physical-cards",
+              "cards/spending-controls"
+            ]
+          },
+          {
+            "group": "Expense Management",
+            "pages": [
+              "expenses/overview",
+              "expenses/whatsapp-receipts",
+              "expenses/reconciliation"
+            ]
+          },
+          {
+            "group": "Financial Insights",
+            "pages": [
+              "insights/overview",
+              "insights/burn-rate-runway",
+              "insights/multi-bank"
+            ]
+          },
+          {
+            "group": "AI Spend Management",
+            "pages": [
+              "ai-spend/overview",
+              "ai-spend/cost-breakdown",
+              "ai-spend/customer-profitability"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/overview",
+              "integrations/accounting",
+              "integrations/slack",
+              "integrations/mcp"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Account & Settings",
+        "groups": [
+          {
+            "group": "Account Setup",
+            "pages": [
+              "account/onboarding",
+              "account/invite-team",
+              "account/plans-billing"
+            ]
+          },
+          {
+            "group": "Security & Compliance",
+            "pages": [
+              "security/overview",
+              "security/3d-secure",
+              "security/transaction-monitoring"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "help/faq",
+              "help/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Instant corporate debit and charge cards via Stripe/Mastercard",
+    "WhatsApp receipt capture for zero-touch expense management",
+    "Real-time financial insights: burn rate, runway, cash flow",
+    "AI spend management with per-request cost breakdown and customer profitability",
+    "MCP integration — query finances from Claude, ChatGPT, or any MCP client",
+    "Multi-bank visibility via PSD2 open banking",
+    "Integrations with Xero, QuickBooks, NetSuite, Slack, Gusto, Wise, Navan",
+    "Dynamic credit without personal guarantees, powered by live business data",
+    "Global payments to 210 countries in 150+ currencies",
+    "Up to 1% cashback on card spend"
+  ],
+  "publicApiSurface": [
+    "Corporate card issuance (virtual and physical)",
+    "Spending controls (vendor controls, category controls, per-card limits)",
+    "WhatsApp bot for receipt capture",
+    "Financial dashboard (burn rate, runway, cash flow, multi-bank)",
+    "AI spend tracking (cost by provider, model, feature, customer)",
+    "MCP server endpoint for AI client integrations",
+    "Integrations: Xero, QuickBooks, NetSuite, Slack, Gusto, Wise, Revolut Business, Navan",
+    "Cashback and FX fee structure per plan",
+    "User management and team invitations",
+    "3D Secure and transaction monitoring controls"
+  ]
+}

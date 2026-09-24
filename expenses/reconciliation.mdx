@@ -1,0 +1,93 @@
+---
+title: "Automatic Expense Reconciliation — Always Up to Date"
+sidebarTitle: "Reconciliation"
+description: "Match card transactions to receipts in real time, resolve exceptions fast, and export clean reconciled data to Xero, QuickBooks, or NetSuite."
+---
+
+Husk reconciles your expenses continuously — not once a month. Every card transaction is matched to its receipt the moment one arrives, so your books stay current and your finance team never faces a backlog of unmatched spend. When every transaction has a receipt and a category, exporting to your accounting tool is a single click.
+
+## How automatic reconciliation works
+
+Reconciliation in Husk is event-driven. There is no batch process and no scheduled job — matching happens in real time as transactions and receipts flow in.
+
+1. **Transaction created** — a Husk card is used and the transaction appears in your dashboard immediately.
+2. **Receipt arrives** — a team member sends the receipt via WhatsApp, uploads it directly, or forwards an email receipt.
+3. **AI matching** — Husk compares the receipt's extracted amount, merchant, date, and currency against open transactions and finds the best match.
+4. **Status updated** — the transaction is marked **Reconciled** and the paired receipt is attached.
+5. **Accounting sync** — reconciled expenses are pushed to your connected accounting tool automatically (or on demand).
+
+<Note>
+  Finance teams get full visibility into every stage of this pipeline. The **Reconciliation** dashboard shows matched, pending, and unmatched transactions in separate views so nothing slips through. Managers can filter by team member, card, category, or date range at any time.
+</Note>
+
+## Review and approve reconciled expenses
+
+<Steps>
+  <Step title="Open the Reconciliation dashboard">
+    In [app.usehusk.com](https://app.usehusk.com), go to **Expenses → Reconciliation**. You'll see three tabs: **Reconciled**, **Pending Match**, and **Needs Attention**.
+  </Step>
+  <Step title="Review reconciled items">
+    Click any reconciled expense to see the matched transaction and the attached receipt side by side. Check that the category, amount, and merchant are correct. Edit any field if needed.
+  </Step>
+  <Step title="Approve for export">
+    Select one or more reconciled expenses and click **Approve**. Approved expenses are locked and queued for export to your accounting tool. You can approve individually or select all and bulk-approve.
+  </Step>
+  <Step title="Export to your accounting tool">
+    Click **Export** to push all approved expenses to Xero, QuickBooks, or NetSuite. Husk maps each expense to the correct account code and cost centre based on your integration settings.
+  </Step>
+</Steps>
+
+## Handling unmatched transactions
+
+Some transactions won't find an automatic match — for example, when a receipt hasn't been submitted yet, or when the amounts differ slightly due to a tip or currency rounding. These appear in the **Needs Attention** tab.
+
+To resolve an unmatched transaction:
+
+<Accordion title="Manually upload a receipt">
+  Open the unmatched transaction, click **Attach Receipt**, and upload a photo or PDF from your device. Husk will re-run the extraction and attempt to match it. If the details align, the transaction moves to **Reconciled** automatically.
+</Accordion>
+
+<Accordion title="Add a note and approve without a receipt">
+  If the original receipt is lost, open the transaction, click **Add Note**, and describe the purchase. Then click **Approve without receipt**. The transaction is flagged in the export with your note attached, so your accountant has context.
+</Accordion>
+
+<Accordion title="Split a transaction">
+  If a single card charge covers multiple cost centres or categories, click **Split Transaction**, enter the amounts and categories for each portion, and save. Each split line is reconciled and exported separately.
+</Accordion>
+
+<Warning>
+  Transactions in the **Needs Attention** tab older than 30 days will trigger a reminder notification to the cardholder and their manager. Keeping this queue clear ensures your books are always accurate.
+</Warning>
+
+## Export to accounting tools
+
+Husk integrates directly with the most widely used accounting platforms. Once expenses are approved, export them in one click:
+
+<CardGroup cols={3}>
+  <Card title="Xero" icon="file-invoice" href="/integrations/accounting">
+    Map categories to Xero account codes and push expenses with full line-item detail.
+  </Card>
+  <Card title="QuickBooks" icon="file-invoice-dollar" href="/integrations/accounting">
+    Sync to QuickBooks Online with automatic vendor matching and class tracking.
+  </Card>
+  <Card title="NetSuite" icon="building-columns" href="/integrations/accounting">
+    Export to NetSuite with subsidiary, department, and custom field mapping.
+  </Card>
+</CardGroup>
+
+For step-by-step setup of each accounting integration, see [Accounting Integrations](/integrations/accounting).
+
+## Real-time expense reports
+
+Because Husk reconciles continuously, your expense reports are always current. There is no month-end crunch, no waiting for employees to submit claims, and no manual data entry.
+
+From **Expenses → Reports** you can:
+
+- Filter by team member, card, category, merchant, or date range
+- View spend against budgets and policies in real time
+- Export reports as CSV or PDF for stakeholders and auditors
+- Schedule automated report delivery to your finance team via email or Slack
+
+<Tip>
+  Connect Husk to Slack to receive a daily or weekly summary of reconciled spend, unmatched transactions, and budget alerts — directly in your finance team's channel. See [Slack Integration](/integrations/slack) to set it up.
+</Tip>

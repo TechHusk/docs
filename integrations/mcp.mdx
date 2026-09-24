@@ -1,0 +1,147 @@
+---
+title: "Query Your Husk Finances From Any MCP AI Client"
+sidebarTitle: "MCP Integration"
+description: "Connect Husk to Claude, ChatGPT, Cursor, or any MCP-compatible client and query your transactions, balances, and spend trends in plain language."
+---
+
+The Husk MCP server exposes your financial data to any AI client that supports the Model Context Protocol (MCP) — an open standard that lets AI assistants access external tools and data sources in a structured, secure way. Once connected, you can ask natural language questions about your company's finances directly from Claude, ChatGPT, Cursor, or any other MCP-compatible tool, without switching tabs or building custom exports.
+
+## What you can ask
+
+Instead of running manual reports, use your AI client to query Husk data conversationally. Here are some examples:
+
+<CardGroup cols={2}>
+  <Card title="Spend analysis" icon="magnifying-glass-chart" href="/insights/overview">
+    "How much did we spend on SaaS last quarter, broken down by tool?"
+  </Card>
+  <Card title="Subscription changes" icon="arrow-trend-up" href="/ai-spend/cost-breakdown">
+    "Which subscriptions went up in price compared to last month?"
+  </Card>
+  <Card title="Overdue invoices" icon="file-invoice" href="/expenses/reconciliation">
+    "Flag every invoice that's overdue and tell me the total outstanding amount."
+  </Card>
+  <Card title="Budget tracking" icon="chart-pie" href="/insights/burn-rate-runway">
+    "Are we on track to hit our Q3 spend budget? Where are we over?"
+  </Card>
+</CardGroup>
+
+---
+
+## What data is accessible via MCP
+
+| Data type | Available via MCP |
+|---|---|
+| Transactions (all cards and accounts) | ✅ |
+| Expense categories and tags | ✅ |
+| Account balances | ✅ |
+| Invoices and payment status | ✅ |
+| AI spend breakdown (cost-per-request, by model) | ✅ |
+| Burn rate and runway estimates | ✅ |
+| Budget vs. actuals | ✅ |
+| Cardholder and team spend | ✅ |
+
+All data returned via MCP reflects your live Husk dashboard — queries are answered in real time, not from a cached export.
+
+<Note>
+  MCP access requires a **Startup or Growth plan**. The MCP server endpoint is not available on the Free plan. [Upgrade your plan](/account/plans-billing) to unlock this feature.
+</Note>
+
+---
+
+## Connect Husk to an MCP client
+
+<Steps>
+  <Step title="Find the MCP endpoint in Husk">
+    Log in to [app.usehusk.com](https://app.usehusk.com) and navigate to **Settings → Integrations → MCP**. You'll see your unique MCP endpoint URL and an API key.
+  </Step>
+  <Step title="Copy your endpoint URL and API key">
+    Click **Copy endpoint URL** and then **Copy API key**. Keep your API key private — anyone with access to it can query your financial data.
+  </Step>
+  <Step title="Add the endpoint to your MCP client">
+    Open your MCP client's configuration file and add a new server entry for Husk using the endpoint URL and API key you copied. See the client-specific instructions below.
+  </Step>
+  <Step title="Test the connection">
+    In your MCP client, ask a simple question such as "What is my current account balance?" to confirm the connection is working. If the client returns a structured response from Husk, you're live.
+  </Step>
+</Steps>
+
+---
+
+## Client configuration
+
+<Tabs>
+  <Tab title="Claude (claude_desktop_config.json)">
+    Open your Claude Desktop configuration file and add the following server block under `mcpServers`:
+
+    ```json
+    {
+      "mcpServers": {
+        "husk": {
+          "url": "https://mcp.usehusk.com/v1",
+          "apiKey": "YOUR_HUSK_API_KEY",
+          "description": "Husk Financial OS — query transactions, balances, and spend trends"
+        }
+      }
+    }
+    ```
+
+    Replace `YOUR_HUSK_API_KEY` with the API key from **Settings → Integrations → MCP**.
+
+    The configuration file is typically located at:
+    - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+    - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+  </Tab>
+  <Tab title="ChatGPT (custom connector)">
+    In ChatGPT, navigate to **Settings → Connected apps → Add custom connector** and enter:
+
+    - **Connector URL**: `https://mcp.usehusk.com/v1`
+    - **Authentication**: Bearer token
+    - **Token**: your Husk API key
+
+    Save the connector and test with a question like "Show me last month's top 10 expenses."
+  </Tab>
+  <Tab title="Cursor">
+    In Cursor, open **Settings → AI → MCP servers** and add a new entry:
+
+    ```json
+    {
+      "name": "Husk",
+      "endpoint": "https://mcp.usehusk.com/v1",
+      "auth": {
+        "type": "bearer",
+        "token": "YOUR_HUSK_API_KEY"
+      }
+    }
+    ```
+
+    Once saved, use the `@Husk` context tag in any Cursor prompt to query your financial data.
+  </Tab>
+  <Tab title="Other MCP clients">
+    Any MCP-compatible client can connect to the Husk server. Use the following details:
+
+    | Setting | Value |
+    |---|---|
+    | Endpoint URL | `https://mcp.usehusk.com/v1` |
+    | Authentication type | Bearer token |
+    | API key | Copied from Settings → Integrations → MCP |
+    | Protocol version | MCP 1.0 |
+
+    Consult your client's documentation for the exact configuration format.
+  </Tab>
+</Tabs>
+
+---
+
+## Security and permissions
+
+- Your MCP API key grants **read-only** access to your financial data. It cannot initiate transactions, create cards, or modify any settings.
+- Rotate your API key at any time from **Settings → Integrations → MCP → Rotate key**. The old key is invalidated immediately.
+- All MCP queries are logged under **Settings → Integrations → MCP → Query log** with timestamps and the questions asked.
+
+<Warning>
+  Do not share your MCP API key in public repositories, chat tools, or with third parties you haven't explicitly authorised. Treat it with the same care as a password.
+</Warning>
+
+<Tip>
+  The MCP server is a powerful tool for board and investor prep. Before a board meeting, ask your AI client: "Summarise our Q3 spend by category, highlight any budget overruns, and show the current runway at our last three months' average burn rate." You'll get a structured answer in seconds that would otherwise require 30 minutes of spreadsheet work.
+</Tip>

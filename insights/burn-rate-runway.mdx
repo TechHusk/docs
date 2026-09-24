@@ -1,0 +1,79 @@
+---
+title: "Track Your Burn Rate and Runway with Husk"
+sidebarTitle: "Burn Rate & Runway"
+description: "Monitor your net monthly cash outflows and calculate how many months of runway remain — updated automatically from your connected accounts."
+---
+
+Burn rate and runway are the two numbers every startup founder checks when deciding whether to hire, invest, or slow down. Husk calculates both automatically from your connected bank accounts and card transactions, so you always have an accurate, up-to-date answer without building a spreadsheet.
+
+## How Husk Defines These Metrics
+
+**Burn Rate** is your net cash outflow averaged over the past three months. It captures the real pace at which your business is consuming cash — inflows (revenue, transfers in) are subtracted from outflows (payroll, SaaS, vendors, card spend) to produce a single monthly figure.
+
+> **Burn Rate = (Total Outflows − Total Inflows) averaged over 3 rolling months**
+
+**Runway** tells you how many months you can continue operating at your current burn rate before your balance reaches zero.
+
+> **Runway = Total Balance ÷ Monthly Burn Rate**
+
+Both figures update continuously as new transactions arrive via card data and open banking feeds.
+
+## Where to Find These Metrics
+
+<Steps>
+  <Step title="Open the Insights dashboard">
+    Log in to [app.usehusk.com](https://app.usehusk.com) and select **Insights** from the left navigation.
+  </Step>
+  <Step title="View the Summary panel">
+    At the top of the Insights page you'll see your **Monthly Burn Rate** and **Runway** cards displayed prominently alongside your current total balance.
+  </Step>
+  <Step title="Explore the Burn Rate chart">
+    Scroll down to the **Burn Rate Trend** chart to see how your monthly burn has moved over the past six months. Hover any data point to see a breakdown of inflows vs. outflows for that period.
+  </Step>
+  <Step title="Drill into categories">
+    Click any month bar to expand a category breakdown — payroll, software subscriptions, travel, and more — so you can see exactly what's driving changes in your burn.
+  </Step>
+</Steps>
+
+## How Husk Calculates the Numbers
+
+Husk sources data from two places:
+
+- **PSD2-connected bank accounts** — live balances and full transaction history from every account you've linked via open banking. The more accounts you connect, the more accurate your runway figure.
+- **Husk card transactions** — every corporate card purchase is captured in real time and rolled into the burn calculation immediately.
+
+Husk uses a **three-month rolling average** for burn rate rather than a single month snapshot. This smooths out one-off large payments (like an annual software invoice) that would otherwise distort your runway figure.
+
+<Info>
+  If you make a large one-time payment in a given month — for example, an annual contract renewal — Husk will note the outlier in the Burn Rate chart. The rolling average ensures your runway calculation remains stable.
+</Info>
+
+## Interpreting Your Numbers
+
+| Runway | What it typically means |
+|---|---|
+| **18+ months** | Healthy buffer — room to invest in growth |
+| **12–18 months** | Comfortable, but worth planning your next raise or revenue milestone |
+| **6–12 months** | Start exploring funding options or cost optimisation now |
+| **< 6 months** | Urgent — prioritise extending runway immediately |
+
+These thresholds are guidelines, not rules. Your situation depends on revenue trajectory, fundraising timelines, and growth plans — use them as a prompt for conversation, not a verdict.
+
+## Warning Signs to Watch For
+
+- **Burn rate accelerating month-over-month** — even if runway looks fine today, a rising burn trend can close the gap fast.
+- **Runway dropping faster than expected** — check whether a large one-off payment is skewing the average, or whether structural costs have increased.
+- **Vendor price creep** — Husk's vendor price trend detection flags when recurring suppliers charge more than usual. Small increases compound quickly across many vendors.
+
+## Extending Runway with Husk
+
+Use the category breakdown to identify the highest-impact places to reduce spend:
+
+- **Catch vendor price hikes early** — Husk alerts you when a recurring vendor charges more than their historical average, giving you time to renegotiate or switch before the cost compounds.
+- **Identify unused SaaS subscriptions** — recurring charges from tools your team no longer uses show up clearly in the Software category.
+- **Review high-spend categories** — sort categories by month-over-month change to find what's growing fastest.
+- **Use model-switching simulation** (Growth plan) — if AI API costs are a significant line item, the [AI Spend](/ai-spend/overview) module can show you how switching models affects your burn rate.
+
+<Tip>
+  During high-growth periods — new hires, product launches, or heavy marketing sprints — check your burn rate **weekly** rather than monthly. Fast-moving spend can shift your runway by weeks in a matter of days, and catching it early gives you time to act.
+</Tip>

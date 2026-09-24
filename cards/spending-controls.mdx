@@ -1,0 +1,113 @@
+---
+title: "Control Team Spend with Husk Card Rules and Limits"
+sidebarTitle: "Spending Controls"
+description: "Set per-card daily, monthly, and per-transaction limits. Block merchants and categories in real time, with 24/7 automated monitoring to flag rogue spend instantly."
+---
+
+Husk spending controls let you define exactly how each card can be used — before a transaction ever happens. You can cap how much can be spent, restrict which merchants or categories are allowed, and rely on Husk's real-time monitoring engine to catch anything unexpected. Controls apply to both virtual and physical cards and take effect immediately when you save them.
+
+## Per-card spending limits
+
+Every card has its own independent set of limits. You can set one, two, or all three limit types simultaneously:
+
+<CardGroup cols={3}>
+  <Card title="Per Transaction" icon="receipt" href="/cards/spending-controls">
+    Cap the maximum amount that can be charged in a single transaction. Any authorisation above the limit is automatically declined.
+  </Card>
+  <Card title="Daily Limit" icon="calendar-day" href="/cards/spending-controls">
+    Set the total amount a card can spend within a rolling 24-hour window.
+  </Card>
+  <Card title="Monthly Limit" icon="calendar" href="/cards/spending-controls">
+    Set a cumulative cap for the calendar month. Useful for budget-aligned team cards.
+  </Card>
+</CardGroup>
+
+### Set or update a spending limit
+
+<Steps>
+  <Step title="Open Cards in the dashboard">
+    Log in to [app.usehusk.com](https://app.usehusk.com) and click **Cards** in the left-hand navigation.
+  </Step>
+  <Step title="Select the card to configure">
+    Click the card you want to update from the card list to open the card detail panel.
+  </Step>
+  <Step title="Click Edit limits">
+    Select **Edit limits** from the card actions menu.
+  </Step>
+  <Step title="Enter your limit values">
+    Toggle on each limit type you want to apply — **Per transaction**, **Daily**, or **Monthly** — and enter the amount in your account currency.
+  </Step>
+  <Step title="Save changes">
+    Click **Save**. The new limits are active immediately on the next transaction attempt.
+  </Step>
+</Steps>
+
+<Warning>
+  Spending limit changes take effect instantly. If you lower a limit while a team member is actively making purchases, the new lower limit applies to the very next transaction — there is no grace period.
+</Warning>
+
+## Vendor controls
+
+Vendor controls let you either restrict a card to a specific list of approved merchants or block individual merchants entirely.
+
+- **Allowlist mode** — the card can only be charged by merchants you explicitly approve. Any other merchant's authorisation request is declined.
+- **Blocklist mode** — the card works everywhere except the merchants you've flagged.
+
+To configure vendor controls:
+
+1. Open the card detail page and select **Merchant controls**.
+2. Choose **Allowlist** or **Blocklist** mode.
+3. Search for a merchant by name and add it to the list.
+4. Click **Save**. Controls apply immediately.
+
+<Info>
+  Merchant matching uses Stripe's merchant data. If a merchant trades under multiple names or legal entities, you may need to add each variant separately.
+</Info>
+
+## Category controls (MCC restrictions)
+
+Every merchant is assigned a Merchant Category Code (MCC) by the card networks. Husk lets you restrict any card to one or more categories — or exclude specific categories entirely.
+
+Common use cases:
+
+| Category restriction | Use case |
+|----------------------|----------|
+| Travel & transport only | Team member travelling for business |
+| Software & SaaS only | Dev tooling card |
+| Meals & entertainment | Sales team card |
+| Block gambling & adult content | Company-wide policy |
+
+To set category controls:
+
+1. Open the card detail page and select **Category controls**.
+2. Toggle **Restrict to categories** on.
+3. Select the permitted categories from the list, or switch to **Block categories** mode and select the categories to exclude.
+4. Click **Save**.
+
+## Real-time transaction monitoring
+
+Husk runs a 24/7 automated monitoring engine that analyses every transaction authorisation request as it happens. The engine flags unusual spend patterns — such as a card being used in an unexpected country, a sudden spike in transaction volume, or a charge from a merchant category that conflicts with the card's controls.
+
+<Note>
+  The monitoring engine operates around the clock, every day of the year. Suspicious transactions trigger instant alerts to the cardholder and to account admins via the dashboard and, if configured, via Slack. See the [Slack integration](/integrations/slack) guide to set up real-time spend alerts in your team channels.
+</Note>
+
+When a transaction is flagged:
+
+- The cardholder receives an immediate push notification asking them to confirm or deny the transaction.
+- Admins see the flagged transaction highlighted in the **Transactions** feed with a **Review required** status.
+- You can approve the transaction, freeze the card, or mark it as fraud — all from the dashboard.
+
+## Apply controls at scale
+
+For teams with many cards, you can apply a set of controls as a **Card policy** and assign it to multiple cards at once:
+
+1. Navigate to **Cards → Policies**.
+2. Click **New policy** and define your limit and category rules.
+3. Assign the policy to one or more cards.
+
+Individual card settings always override a policy — so you can use a policy as a baseline and customise specific cards on top of it.
+
+<Tip>
+  Create a default policy for your whole team with sensible baseline limits and blocked categories, then override it only for team members who have specific needs. This keeps your spending rules consistent without manual work for every new card you issue.
+</Tip>

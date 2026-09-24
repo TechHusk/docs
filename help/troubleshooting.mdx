@@ -1,0 +1,147 @@
+---
+title: "Troubleshooting Common Issues with Husk Finance OS"
+sidebarTitle: "Troubleshooting"
+description: "Step-by-step fixes for the most common Husk issues — from declined cards and unmatched receipts to bank connection errors and missing Financial Insights data."
+---
+
+Something not working as expected? This page walks you through the most common issues Husk users encounter and exactly how to resolve them. Work through the relevant steps below, and if you are still stuck, the Husk support team is available via Slack or email — details at the bottom of the page.
+
+<AccordionGroup>
+
+  <Accordion title="Card declined at point of sale">
+    A card decline can happen for several reasons. Work through this checklist to identify the cause:
+
+    **1. Check the spending limit**
+    Open the [Husk dashboard](https://app.usehusk.com) and navigate to **Cards → [card name] → Spending Controls**. Confirm that the transaction amount does not exceed the card's single-transaction limit or its remaining monthly/weekly budget.
+
+    **2. Check whether the card is frozen**
+    On the same card detail page, look at the card status badge. If it shows **Frozen**, click **Unfreeze Card** to reactivate it. Cards can be frozen manually by a card manager or automatically by the transaction monitoring engine if suspicious activity was detected.
+
+    **3. Check the available balance**
+    Navigate to **Overview** and verify that your Husk account has sufficient available balance to cover the transaction. If your account balance is low, top it up before retrying.
+
+    **4. Verify the card is activated**
+    Physical cards require activation before first use. Go to **Cards → [card name] → Activate Card** and follow the on-screen steps.
+
+    **5. Check merchant category restrictions**
+    If the card has a merchant category restriction (e.g., software-only), a payment at a restricted merchant will be declined at network level. Adjust the category policy in **Cards → [card name] → Spending Controls** if the purchase is legitimate.
+
+    If the decline persists after all checks, contact support with the card's last four digits and the transaction timestamp.
+  </Accordion>
+
+  <Accordion title="Receipt not matched to a transaction">
+    When a receipt does not automatically match to a transaction, try the following:
+
+    **1. Upload the receipt manually**
+    In the dashboard, go to **Transactions**, find the relevant transaction, and click **Attach Receipt**. Upload the image or PDF directly from your device.
+
+    **2. Check the transaction date range**
+    Husk matches receipts to transactions by amount, merchant name, and date. If the receipt date differs from the transaction settlement date (which can happen with pre-authorisations), the match may fail. Filter transactions by a wider date range to find the correct entry.
+
+    **3. Verify the amount matches**
+    Tipping or service charges can cause the receipt total to differ from the authorised amount. In these cases, attach the receipt manually and note the discrepancy in the memo field.
+
+    **4. Wait for settlement**
+    Pending transactions cannot be matched until they settle. If the transaction is still showing as *Pending*, wait for it to settle (usually within 1–3 business days) and then re-submit the receipt.
+  </Accordion>
+
+  <Accordion title="WhatsApp receipt not processing">
+    If you sent a receipt via WhatsApp but it has not appeared in Husk, check the following:
+
+    **1. Check image quality**
+    Husk's AI needs to be able to read the text on the receipt clearly. Blurry, low-contrast, or partially cropped images may fail to extract correctly. Retake the photo in good lighting, ensuring all four edges of the receipt are visible.
+
+    **2. Check file size**
+    Images and PDFs must be **under 10 MB**. If your file is larger, compress the image or reduce the PDF resolution before sending. WhatsApp applies its own compression to images sent as photos — sending as a *document* preserves quality but increases the chance of hitting the size limit.
+
+    **3. Try sending as PDF**
+    If a photo consistently fails to process, try forwarding the original email receipt as a PDF instead. PDF receipts often produce more reliable extraction results.
+
+    **4. Confirm you are using the correct WhatsApp number**
+    The Husk WhatsApp number is shown in **Expenses → WhatsApp Setup** in your dashboard. Make sure you are messaging this number and not a personal contact by mistake.
+
+    **5. Check for a processing error notification**
+    Husk will reply in the WhatsApp thread if a receipt cannot be processed. Check the chat for any error messages that indicate the specific reason for the failure.
+  </Accordion>
+
+  <Accordion title="Bank account not connecting via open banking">
+    If you are having trouble adding a bank account through PSD2 open banking, try these steps:
+
+    **1. Re-authorise the connection**
+    PSD2 open banking connections expire periodically (typically every 90 days, depending on your bank). Go to **Insights → Multi-Bank → [bank name] → Re-authorise** and complete the consent flow with your bank again.
+
+    **2. Check if your bank is supported**
+    Not all banks in every European country are accessible via PSD2 at this time. On the **Add Bank Account** screen, search for your bank name — if it does not appear in the results, it may not yet be supported. Contact **hi@usehusk.com** to request coverage for your bank.
+
+    **3. Complete the bank's own consent flow**
+    Some banks require you to log in to your online banking portal and explicitly grant data-sharing consent before a PSD2 connection can be established. Check your bank's app or website for any pending consent requests.
+
+    **4. Try a different browser or clear cookies**
+    Open banking redirect flows can sometimes be disrupted by browser extensions or cached sessions. Try the connection in a private/incognito window or a different browser.
+
+    **5. Check your bank's service status**
+    If your bank is experiencing an outage, the PSD2 connection will fail. Check your bank's status page or contact them directly to confirm their open banking API is operational.
+  </Accordion>
+
+  <Accordion title="Team member not receiving an invite email">
+    If a team member says they have not received their Husk invitation, follow these steps:
+
+    **1. Ask them to check their spam or junk folder**
+    Invitation emails from **no-reply@usehusk.com** occasionally end up in spam, especially on corporate email servers with strict filtering rules. Ask the team member to search for "Husk" in all folders.
+
+    **2. Resend the invitation from the dashboard**
+    Go to **Settings → Team Members**, find the pending invitation, and click **Resend Invite**. A fresh email will be sent immediately.
+
+    **3. Verify the email address**
+    Confirm that the email address you entered when creating the invitation is correct — a single typo will send the invite to the wrong inbox. If the address was wrong, cancel the pending invite and create a new one with the correct address.
+
+    **4. Check for email delivery delays**
+    During high-traffic periods, invite emails can take up to 10 minutes to arrive. Ask the team member to wait a few minutes and refresh their inbox before requesting a resend.
+  </Accordion>
+
+  <Accordion title="Financial Insights showing no data">
+    If your **Burn Rate**, **Cash Flow**, or **Runway** dashboards are empty, here is what to check:
+
+    **1. Confirm you are on the Startup or Growth plan**
+    Financial Insights are not available on the Free plan. Go to **Settings → Plans & Billing** to confirm your current plan. If you are on Free, upgrade to Startup or Growth to unlock Insights.
+
+    **2. Connect your bank accounts**
+    Financial Insights draw on your connected bank account data. Navigate to **Insights → Multi-Bank** and confirm that at least one bank account is connected and authorised. If no accounts are listed, add one by clicking **Connect Bank Account**.
+
+    **3. Wait up to 24 hours for the first sync**
+    After connecting a bank account for the first time, Husk performs an initial historical data sync which can take up to **24 hours** to complete. Once the first sync is done, Insights will populate automatically.
+
+    **4. Re-authorise an expired connection**
+    If a previously connected bank account's PSD2 consent has expired, the data feed will stop. Check for a **Re-authorise** prompt next to each bank account in **Insights → Multi-Bank** and complete the renewal flow.
+  </Accordion>
+
+  <Accordion title="3D Secure challenge not received">
+    If a cardholder is not receiving the 3D Secure SMS or push notification during an online payment, try the following:
+
+    **1. Check the phone number on file**
+    Go to **Settings → Team Members → [member] → Contact Details** and confirm the mobile number is correct, including the full international dialling code (e.g., +44 for UK, +353 for Ireland). An incorrect number means SMS challenges will never arrive.
+
+    **2. Check push notification permissions**
+    If the cardholder has the Husk mobile app installed, 3DS challenges are delivered as push notifications rather than SMS. Ask them to check that notifications for the Husk app are enabled in their phone's system settings.
+
+    **3. Check for network or signal issues**
+    SMS delivery can be delayed if the cardholder has poor mobile signal or is roaming in a region with limited coverage. Ask them to move to a better signal area and retry the payment.
+
+    **4. Retry the payment**
+    3DS sessions have a short timeout window (usually 5–10 minutes). If the challenge was not responded to in time, the session will have expired. Ask the cardholder to return to the merchant checkout and initiate a fresh payment — a new 3DS request will be triggered.
+
+    **5. Contact support**
+    If none of the above steps resolve the issue, contact the Husk team with the cardholder's name, the last four digits of the card, and the approximate date and time of the attempted transaction. The team can investigate the 3DS event log directly.
+  </Accordion>
+
+</AccordionGroup>
+
+---
+
+<Note>
+  **Still stuck? We are here to help.**
+
+  All Husk plans — including Free — include access to **dedicated Slack support**. Join your support channel from the link in your dashboard's Help menu for the fastest response.
+
+  You can also reach the team by email at **hi@usehusk.com**. Include your company name, a description of the issue, and any relevant transaction IDs or card details so we can investigate quickly.
+</Note>

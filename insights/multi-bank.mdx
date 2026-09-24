@@ -1,0 +1,89 @@
+---
+title: "Connect Multiple Bank Accounts to Husk"
+sidebarTitle: "Multi-Bank View"
+description: "Link all your European bank accounts via PSD2 open banking to see unified balances, transactions, and categorised spend in one Husk dashboard."
+---
+
+Most growing startups keep money in more than one place — a primary current account, a Wise account for international payments, a Revolut Business account for card spend, perhaps an account at a traditional bank. Husk's multi-bank view pulls all of them into a single dashboard so you never have to log in to each provider separately to understand your true cash position.
+
+## What Multi-Bank Visibility Means
+
+Multi-bank visibility gives you one unified view across all your operational accounts. You see:
+
+- **Combined balance** — the total cash available across every connected account, shown as a single number at the top of your dashboard
+- **Per-account breakdown** — individual balances for each connected bank so you can see how funds are distributed
+- **Unified transaction feed** — all transactions from all accounts in a single, chronological list with consistent categorisation
+- **Categorised spend** — Husk applies the same category tags to bank transactions as it does to card transactions, so your Insights charts include everything
+
+This unified view also powers your [burn rate and runway](/insights/burn-rate-runway) calculations. The more accounts you connect, the more accurate those figures become.
+
+## How to Connect a Bank Account
+
+Husk uses PSD2-regulated open banking to connect to your accounts. The process is handled entirely within the Husk dashboard — you never share login credentials with Husk.
+
+<Steps>
+  <Step title="Go to Connected Accounts">
+    In [app.usehusk.com](https://app.usehusk.com), navigate to **Settings → Connected Accounts** and click **Add Bank Account**.
+  </Step>
+  <Step title="Search for your bank">
+    Type your bank's name in the search field. Husk supports most European banks — including Wise, Revolut Business, BNP Paribas, ING, and hundreds of retail and business banks across the EU and UK.
+  </Step>
+  <Step title="Authorise with your bank">
+    You'll be redirected to your bank's own authentication screen (or their app). Approve the read-only data sharing request. Your bank controls this flow — Husk never sees your banking credentials.
+  </Step>
+  <Step title="Choose accounts to share">
+    Select which accounts at that institution you want to connect. You can connect multiple accounts from the same bank in a single authorisation.
+  </Step>
+  <Step title="Return to Husk">
+    Once you've approved access, you're redirected back to Husk. Your account balances and recent transaction history will appear in the dashboard within a few seconds.
+  </Step>
+</Steps>
+
+## Supported Banks
+
+Husk connects to most European banks that support PSD2 open banking. The following are confirmed integrations:
+
+<CardGroup cols={2}>
+  <Card title="Wise" icon="money-bill-transfer" href="/integrations/overview">
+    Full balance and transaction visibility for Wise Business accounts, including multi-currency balances.
+  </Card>
+  <Card title="Revolut Business" icon="credit-card" href="/integrations/overview">
+    Connect your Revolut Business account to bring card and account transactions into Husk.
+  </Card>
+  <Card title="BNP Paribas" icon="building-columns" href="/integrations/overview">
+    Connect BNP Paribas business accounts for balance and transaction data via PSD2.
+  </Card>
+  <Card title="ING" icon="building-columns" href="/integrations/overview">
+    Connect ING business accounts across supported European markets.
+  </Card>
+</CardGroup>
+
+If your bank isn't listed, use the search in **Settings → Connected Accounts** — coverage extends to hundreds of institutions. [Contact support](https://www.usehusk.com) if your bank doesn't appear.
+
+## What You See Once Connected
+
+After connecting an account you'll have access to:
+
+| Feature | Details |
+|---|---|
+| **Balance** | Live balance pulled at each refresh |
+| **Transaction history** | Up to 12 months of historical transactions on first connection |
+| **Automatic categorisation** | Transactions tagged by category (payroll, SaaS, travel, etc.) |
+| **Merchant enrichment** | Merchant names cleaned and normalised where data is available |
+| **Inclusion in Insights** | Transactions count toward burn rate, runway, and spend charts |
+
+## Data Refresh Frequency
+
+Husk refreshes connected bank account data **up to four times per day**. For most business use cases this means your dashboard is never more than a few hours behind. Real-time card transactions from Husk corporate cards update instantly and are not subject to this refresh cycle.
+
+<Info>
+  PSD2 authorisations typically expire after **90 days**. Husk will notify you before your connection lapses so you can re-authorise without any gap in your data.
+</Info>
+
+<Note>
+  PSD2 open banking gives Husk **read-only access** to your connected accounts. Husk can see your balances and transactions, but cannot initiate payments, move money, or make any changes to your accounts. Your funds are always under your exclusive control.
+</Note>
+
+<Tip>
+  For the most accurate runway calculation, connect **all** accounts where your company holds operational funds — including accounts you don't use for day-to-day spend. Even an account that rarely moves affects your true total balance and, therefore, your runway figure.
+</Tip>

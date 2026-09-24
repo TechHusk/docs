@@ -1,0 +1,80 @@
+---
+title: "Real-Time Transaction Monitoring in Husk Explained"
+sidebarTitle: "Transaction Monitoring"
+description: "Husk's 24/7 monitoring engine flags suspicious transactions and budget leaks the moment they occur, so you can review, approve, or dispute in seconds."
+---
+
+Every transaction made on a Husk card passes through a real-time monitoring engine that runs around the clock. Rather than discovering a problem in your end-of-month reconciliation, you get an alert the instant something looks off — whether that is an unusually large charge, a purchase in the wrong category, or a duplicate that slipped through. Acting quickly on these alerts is one of the most effective ways to minimise your financial exposure.
+
+<Warning>
+  Review monitoring alerts as soon as they arrive. The sooner a suspicious transaction is flagged to Husk, the faster it can be frozen and a dispute initiated. Delayed responses reduce your chances of a successful chargeback and increase your exposure window.
+</Warning>
+
+## Types of alerts
+
+Husk's monitoring engine watches for the following patterns and notifies your finance team instantly:
+
+<CardGroup cols={2}>
+  <Card title="Unusually Large Transactions" icon="arrow-trend-up" href="/security/transaction-monitoring">
+    Charges that significantly exceed a cardholder's typical spend pattern or breach a pre-set single-transaction limit.
+  </Card>
+  <Card title="Out-of-Policy Spend" icon="ban" href="/security/transaction-monitoring">
+    Transactions in merchant categories that are blocked or restricted by your company's spending policy.
+  </Card>
+  <Card title="Category Violations" icon="tag" href="/security/transaction-monitoring">
+    Purchases in categories not permitted for a specific card or team member, such as entertainment on a software-only card.
+  </Card>
+  <Card title="Duplicate Charges" icon="copy" href="/security/transaction-monitoring">
+    Multiple charges from the same merchant for the same amount within a short window — a common indicator of accidental double-billing or fraud.
+  </Card>
+</CardGroup>
+
+## Where to view alerts
+
+Husk surfaces monitoring alerts in two places:
+
+- **Dashboard notification centre** — Click the bell icon in the top-right corner of the [Husk dashboard](https://app.usehusk.com) to see all open alerts, sorted by severity. Each alert links directly to the flagged transaction.
+- **Slack** — If you have the Slack integration connected, alerts are posted to your chosen channel in real time. Team members can react directly in Slack to acknowledge or escalate an alert without opening the dashboard.
+
+<Tip>
+  Set up the Slack integration from **Integrations → Slack** to ensure your finance team and relevant managers are notified immediately, even when they are not actively using the dashboard.
+</Tip>
+
+## How to respond to a flagged transaction
+
+When a transaction is flagged, you have three options available directly from the alert:
+
+| Action | When to use it | What happens |
+|---|---|---|
+| **Approve** | The spend is legitimate but triggered a rule (e.g., a one-off large payment) | The alert is dismissed and the transaction is marked as reviewed. |
+| **Review** | You need more context before deciding | The transaction is marked as under review and assigned to a team member. |
+| **Dispute** | The charge is unauthorised or incorrect | A dispute case is opened with Husk's card operations team. |
+
+## How to dispute a transaction
+
+<Steps>
+  <Step title="Find the transaction">
+    Open the [Husk dashboard](https://app.usehusk.com) and navigate to **Transactions**. Use the search or filter by card, date range, or merchant to locate the charge you want to dispute.
+  </Step>
+  <Step title="Click Dispute">
+    Open the transaction detail view and click the **Dispute** button in the top-right corner of the panel. This is available on any settled transaction.
+  </Step>
+  <Step title="Fill in the reason">
+    Select the most accurate reason from the dropdown — options include *Unauthorised transaction*, *Item not received*, *Duplicate charge*, *Incorrect amount*, and *Fraudulent merchant*. Add any supporting details in the free-text field, and attach any relevant evidence (e.g., a receipt showing a different amount).
+  </Step>
+  <Step title="Submit the dispute">
+    Click **Submit Dispute**. Husk's card operations team will acknowledge your dispute within one business day and guide it through the Mastercard chargeback process.
+  </Step>
+</Steps>
+
+<Warning>
+  A chargeback processing fee of **€25.00** applies per disputed transaction. This fee is waived if the dispute is upheld in your favour. Make sure you have exhausted direct resolution with the merchant before initiating a chargeback, as many billing errors can be resolved faster that way.
+</Warning>
+
+## Dispute timelines
+
+Chargeback investigations typically take **30–90 days** depending on the merchant's acquirer and the complexity of the case. You can track the status of any open dispute in **Transactions → Disputes** at any time.
+
+<Info>
+  Provisional credits are not currently available. Funds are returned to your account only once the chargeback is resolved in your favour.
+</Info>
